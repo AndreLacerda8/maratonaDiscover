@@ -107,9 +107,9 @@ const DOM = {
 
 const Utils = {
     formatAmount(value){
-        value = Number(value.replace(/\,\./g, "")) * 100
+        value = value * 100
 
-        return value
+        return Math.round(value)
     },
 
     formatDate(date){
@@ -193,7 +193,7 @@ const Form = {
             //apagar os dados do formulario
             Form.clearFields()
             //fechar modal
-            Modal.close()
+            Modal.changeModal()
         } catch (error) {
             alert(error.message)
         }
