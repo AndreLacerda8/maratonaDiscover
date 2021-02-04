@@ -104,7 +104,7 @@ header{
 
 /* Balance */
 #balance{
-    margin-top: -8rem;
+    margin-top: -5rem;
 }
 
 #balance h2{
@@ -132,6 +132,14 @@ header{
     font-size: 2rem;
     line-height: 3rem;
     margin-top: 1rem;
+}
+
+.card #incomeDisplay{
+    color: var(--green)
+}
+
+.card #expenseDisplay{
+    color: var(--red);
 }
 
 .card.total{/*está junto pois é pra mudar o que tem a classe card e total junto*/
