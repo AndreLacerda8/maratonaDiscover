@@ -182,6 +182,10 @@ table tbody td{
     padding: 1rem 2rem;
 }
 
+#data-table img{
+    cursor: pointer;
+}
+
 td.description{
     color: var(--dark-blue);
 }
