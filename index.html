@@ -46,20 +46,20 @@
             <h2 class="sr-only">Transações</h2>
 
             <a href="#" 
-            onclick="Modal.open()"
+            onclick="Modal.changeModal()"
             class="button new">+ Nova Transação</a>
 
             <table id="data-table">
                 <thead> <!--thead é o conteudo que vai ter na tabela-->
                     <tr><!-- tr é uma linha -->
-                        <th>Descrição</th><!--th é o conteúdo da head-->
-                        <th>Valor</th>
-                        <th>Data</th>
+                        <th class="description" onclick="Transaction.sortDescription()"><span title="Ordenar">Descrição</span></th><!--th é o conteúdo da head-->
+                        <th class="amount" onclick="Transaction.sortAmount()"><span title="Ordenar">Valor</span></th>
+                        <th class="date" onclick="Transaction.sortDate()"><span title="Ordenar">Data</span></th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody><!--tbody é onde coloca os dados de acordo com o conteudo da tabela-->
-                    
+
                 </tbody>
             </table>
         </section>
@@ -72,7 +72,7 @@
                     <h2>Nova Transação</h2>
                     <form action="" onsubmit="Form.submit(event)">
                         <div class="input-group">
-                            <label class="sr-only" for="description">Descrição</label>
+                            <label class="sr-only" for="description" >Descrição</label>
                             <input 
                             type="text" 
                             id="description" 
@@ -102,7 +102,7 @@
 
                         <div class="input-group actions">
                             <a
-                            onclick="Modal.close()" 
+                            onclick="Modal.cancel()"
                             href="#" 
                             class="button cancel">Cancelar</a>
                             <button>Salvar</button>

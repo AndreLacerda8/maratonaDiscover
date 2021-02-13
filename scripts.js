@@ -1,7 +1,12 @@
 const Modal = {
     changeModal(){
         document.querySelector('.modal-overlay').classList.toggle('active')
-    }
+    },
+
+    cancel(){
+        Modal.changeModal()
+        Form.clearFields()
+    },
 }
 
 //guardar as informções no localStorage, é como se fosse um "banco de dados" mas no navegador.
@@ -56,7 +61,76 @@ const Transaction = {
 
     total(){
         return Transaction.incomes() + Transaction.expenses()
-    }
+    },
+
+    sortDescription(){
+        const value = document.querySelector('.description')
+        
+        this.all.sort((a,b) => {
+            let x = a.description.normalize("NFD").toUpperCase()//tirar acentos e colocar tudomaiusculo para comparar corretamente
+            let y = b.description.normalize("NFD").toUpperCase()
+            if(x < y)
+                return -1
+            else if(x > y)
+                return 1
+            return 0
+        })
+            
+        if(!value.classList.contains('crescente'))
+            value.classList.add('crescente')
+        else{
+            this.all.reverse()
+            value.classList.remove('crescente')
+        }
+        App.reload()
+    },
+
+    sortAmount(){
+        const value = document.querySelector('.amount')
+        
+        this.all.sort((a,b) => {
+            let x = a.amount
+            let y = b.amount
+            if(x < y)
+                return -1
+            else if(x > y)
+                return 1
+            return 0
+        })
+            
+        if(!value.classList.contains('crescente'))
+            value.classList.add('crescente')
+        else
+        {
+            this.all.reverse()
+            value.classList.remove('crescente')
+        }   
+        App.reload()
+    },
+
+    sortDate(){
+        const value = document.querySelector('.date')
+        
+        this.all.sort((a,b) => {
+            let dateSplittedA = a.date.split('/')
+            let dateSplittedB = b.date.split('/')
+            let x = dateSplittedA[2] + dateSplittedA[1] + dateSplittedA[0]
+            let y = dateSplittedB[2] + dateSplittedB[1] + dateSplittedB[0]
+            if(x < y)
+                return -1
+            else if(x > y)
+                return 1
+            return 0
+        })
+        if(!value.classList.contains('crescente'))
+            value.classList.add('crescente')
+        else
+        {
+            this.all.reverse()
+            value.classList.remove('crescente')
+        }
+        App.reload()
+    },
 }
 
 const DOM = {
